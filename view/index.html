@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>手机号码归宿地查询</title>
+    <style>
+        #singleForm{
+            font-family: -apple-system,BlinkMacSystemFont,Helvetica Neue,PingFang SC,Microsoft YaHei,Source Han Sans SC,Noto Sans CJK SC,WenQuanYi Micro Hei,sans-serif;
+            -webkit-font-smoothing: antialiased;
+            text-align: center;
+            border-collapse: collapse;
+            border-spacing: 0;
+            padding: 0;
+            margin: 0;
+        }
+
+        #phoneNo{
+            border-collapse: collapse;
+            border-spacing: 0;
+            padding: 0;
+            margin: 0;
+            outline: 0;
+            font-family: Tahoma, Helvetica, "microsoft yahei", "Hiragino Sans GB", Simsun, \5b8b\4f53, sans-serif;
+            -webkit-font-smoothing: antialiased;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+            transition: border linear .2s, box-shadow linear .2s;
+            height: 40px;
+            line-height: 40px;
+            width: 50%;
+            color: #333;
+            font-size: 12px;
+            text-indent: 5px;
+            border-radius: 4px;
+            display: inline-block;
+        }
+        .custom-btn{
+            border-collapse: collapse;
+            border-spacing: 0;
+            padding: 0;
+            margin: 0;
+            font-family: Tahoma, Helvetica, "microsoft yahei", "Hiragino Sans GB", Simsun, \5b8b\4f53, sans-serif;
+            -webkit-font-smoothing: antialiased;
+            border: 1px solid #5bb1e4;
+            width: 18%;
+            color: #FFF;
+            height: 42px;
+            line-height: 42px;
+            background: #5bb1e4;
+            outline: 0;
+            border-radius: 4px;
+            cursor: pointer;
+            -webkit-appearance: none;
+            display: inline-block;
+
+        }
+        .api_table{
+            -webkit-font-smoothing: antialiased;
+            text-align: center;
+            border-collapse: collapse;
+            border-spacing: 0;
+            margin-top: 10px;
+            width: 100%;
+            font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+            font-size: 12px;
+            border-right: 1px solid #8fbcd8;
+            border-left: 1px solid #8fbcd8;
+            border-top: 1px solid #8fbcd8;
+        }
+        .api_table tr.title{
+            -webkit-font-smoothing: antialiased;
+            text-align: center;
+            border-collapse: collapse;
+            border-spacing: 0;
+            font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+            font-size: 12px;
+            padding: 0;
+            margin: 0;
+            background: #5bb1e4;
+            height: 40px;
+            line-height: 40px;
+            font-weight: bolder;
+            color: #ffffff;
+        }
+        .api_table td{
+            -webkit-font-smoothing: antialiased;
+            border-collapse: collapse;
+            border-spacing: 0;
+            font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+            font-size: 12px;
+            width: 120px;
+            padding: 0;
+            margin: 0;
+            line-height: 40px;
+            color: #646466;
+            border-bottom: 1px solid #8fbcd8;
+            border-right: 1px solid #8fbcd8;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<form name="singleForm" id="singleForm" action="/phoneNum" method="post">
+    <div class="pmLeft"><input type="text" name="phoneNo" value="" id="phoneNo" placeholder="请输入要查询的手机号码(段)" class="woinput"></div>
+    <div class="pmRight"><input type="submit" value="查询" class="custom-btn" id="singleBtn"></div>
+    <div class="clearfix"></div>
+</form>
+<table class="api_table">
+    <tbody>
+    <tr class="title">
+        <td colspan="2" align="center" style="color: #FFF">+++查询结果+++</td>
+    </tr>
+
+    <tr>
+        <td width="120">手机号码段</td>
+        <td><span id="resPhoneNo">{{.Phone_No}}</span></td>
+    </tr>
+
+    <tr>
+        <td>卡号归属地</td>
+        <td><span id="resLoc">{{.Phone_Info.Province  }} {{.Phone_Info.City}}</span></td>
+
+    </tr>
+    <tr>
+        <td>运营商</td>
+        <td><span id="resSp">{{.Phone_Info.Company}}</span></td>
+    </tr>
+    <tr>
+        <td>区号</td>
+        <td><span id="resAreaCode">{{.Phone_Info.Areacode}}</span></td>
+    </tr>
+    <tr>
+        <td>邮编</td>
+        <td><span id="resZip">{{.Phone_Info.Zip}}</span></td>
+    </tr>
+    <tr>
+        <td colspan="2" style="color:#666; font-size: 12px; ">号码归属地数据由<a href="https://www.juhe.cn/" target="_blank">聚合数据</a>提供
+        </td>
+    </tr>
+    </tbody>
+
+</table>
+</body>
+</html>
